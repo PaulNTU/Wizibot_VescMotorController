@@ -5,14 +5,16 @@
 VescMotorController _motorController;
 
 void setup() {
-  // If you are using the wizibot shield use this initialisation command:
+  // If you are using the wizibot shield with the seven pin socket use this initialisation command:
   _motorController.initWithWizibotShield();
 
-  // Otherwise use this one (Left motor pin, Right motor pin)
-  _motorController.init(3, 5);
+  // Otherwise use this one (Left motor pin, Right motor pin). Pins need to be a PWM ~ pin
+  //_motorController.init(3, 5);
 }
 
 void loop() {
+
+  _motorController.setThrottle(100);
 
   // Move forwards at max speed
   _motorController.setThrottle(100);
