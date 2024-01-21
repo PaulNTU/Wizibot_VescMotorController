@@ -1,20 +1,10 @@
-#######################################
-# Syntax Coloring Map For VescMotorController
-#######################################
+# datatypes and class names
+VescMotorController	KEYWORD1		editor.data_type.style
 
-#######################################
-# Class (KEYWORD1)
-#######################################
-VescMotorController KEYWORD1
+# functions and methods
+initWithWizibotShield	KEYWORD2
+init	KEYWORD2
+setThrottle	KEYWORD2
+stop	KEYWORD2
 
-#######################################
-# Methods and Functions (KEYWORD2)
-#######################################
-initWithWizibotShield KEYWORD2
-init KEYWORD2
-setThrottle KEYWORD2
-stop KEYWORD2
-
-#######################################
-# Constants (LITERAL1)
-#######################################
+# defines
