@@ -1,10 +1,6 @@
-# datatypes and class names
-VescMotorController	KEYWORD1		editor.data_type.style
-
-# functions and methods
-initWithWizibotShield	KEYWORD2
-init	KEYWORD2
-setThrottle	KEYWORD2
-stop	KEYWORD2
-
-# defines
+VescMotorController KEYWORD1
+initWithWizibotShield KEYWORD2
+init KEYWORD2
+setThrottle KEYWORD2
+stop KEYWORD2
+WizibotMotorSocket KEYWORD1

@@ -2,16 +2,26 @@
 #include <Servo.h>
 
 /// <summary>
+/// Available Sockets for the Vesc control
+/// </summary>
+enum WizibotMotorSocket { M1, U1, U2 };
+
+/// <summary>
 /// Vesc motor controller for use with either the Wizibot Shield or utilising two PWM pins on an Arduino board
 /// </summary>
 class VescMotorController
 {
   public:
+	
     /// <summary>
     /// Initialise the controller for use with the Wizibot Shield
+	/// The Wizibot shield sockets are supported on the following
+	/// M1 - All Arduino Boards
+	/// U1 - Arduino Mega
+	/// U2 - Arduino Mega
     /// </summary>
-    void initWithWizibotShield();
-      
+    void initWithWizibotShield(WizibotMotorSocket socket);
+    
     /// <summary>
     /// Initialise the controller to use th specified PWM pins
     /// </summary>
@@ -32,7 +42,9 @@ class VescMotorController
     /// </summary>
     void stop();
 
+
   protected:
+
     /// <summary>
     /// Currently set left motor speed
     /// </summary> 
@@ -52,6 +64,26 @@ class VescMotorController
     /// Wizibot right motor PWM pin on the Arduino
     /// </summary>
     const int WIZIBOT_RIGHT_MOTOR_PIN = 5;
+
+	/// <summary>
+	/// Wizibot right motor PWN Pin for the U1 socket
+	/// </summary>
+	const int WIZIBOT_RIGHT_MOTOR_U1_PIN = 7;
+
+	/// <summary>
+	/// Wizibot left motor PWN Pin for the U1 socket
+	/// </summary>
+	const int WIZIBOT_LEFT_MOTOR_U1_PIN = 6;
+
+	/// <summary>
+	/// Wizibot right motor PWN Pin for the U2 socket
+	/// </summary>
+	const int WIZIBOT_RIGHT_MOTOR_U2_PIN = 8;
+
+	/// <summary>
+	/// Wizibot right motor PWN Pin for the U1 socket
+	/// </summary>
+	const int WIZIBOT_LEFT_MOTOR_U2_PIN = 9;
 
     /// <summary>
     /// Maximum PWM signal for full speed ahead

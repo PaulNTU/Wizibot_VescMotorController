@@ -3,11 +3,36 @@
 /// <summary>
 /// Initialise the controller for use with the Wizibot Shield
 /// </summary>
-void VescMotorController::initWithWizibotShield()
+void VescMotorController::initWithWizibotShield(WizibotMotorSocket socket)
 {
-    _leftMotor.attach(WIZIBOT_LEFT_MOTOR_PIN);
-    _rightMotor.attach(WIZIBOT_RIGHT_MOTOR_PIN);
+#ifdef ARDUINO_AVR_UNO
+	if (socket == WizibotMotorSocket::U1 || socket == WizibotMotorSocket::U2)
+	{
+#error "The Arduino Uno boards do not support the Vesc motor control on sockets U1 and U2. Please use socket M1"
+		return;
+	}
+#endif
+	switch (socket)
+	{
+		case WizibotMotorSocket::M1:
+			// M1 seven pin socket
+			_leftMotor.attach(WIZIBOT_LEFT_MOTOR_PIN);
+			_rightMotor.attach(WIZIBOT_RIGHT_MOTOR_PIN);
+			break;
 
+		case WizibotMotorSocket::U1:
+			// U1 Socket
+			_leftMotor.attach(WIZIBOT_LEFT_MOTOR_U1_PIN);
+			_rightMotor.attach(WIZIBOT_RIGHT_MOTOR_U1_PIN);
+			return;
+
+		case WizibotMotorSocket::U2:
+			// U2 Socket
+			_leftMotor.attach(WIZIBOT_LEFT_MOTOR_U2_PIN);
+			_rightMotor.attach(WIZIBOT_RIGHT_MOTOR_U2_PIN);
+			return;
+
+	}
 	// Initialise the VESC by setting it to stop for 500ms
 	stop();
 	delay(500);
